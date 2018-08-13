@@ -29,12 +29,10 @@ function isChecked() {
   let status = event.target
   if (status.value === "unchecked") {
     status.value = "checked"
-    uncheckedCount--
-    uncheckedCountSpan.innerHTML = uncheckedCount
+    uncheckUpdate("remove")
   } else {
     status.value = "unchecked"
-    uncheckedCount++
-    uncheckedCountSpan.innerHTML = uncheckedCount
+    uncheckUpdate("add")
   }
 }
 
@@ -44,10 +42,19 @@ function deleteListItem() {
  
   listCount--
   itemCountSpan.innerHTML = listCount
-  
+
   if (checkValue === "unchecked") {
-    uncheckedCount--
-    uncheckedCountSpan.innerHTML = uncheckedCount
+    uncheckUpdate("remove")
   }
   parent.remove()
+}
+
+function uncheckUpdate(str) {
+  if (str === "remove") {
+    uncheckedCount--
+    uncheckedCountSpan.innerHTML = uncheckedCount
+  } else if (str === "add") {
+    uncheckedCount++
+    uncheckedCountSpan.innerHTML = uncheckedCount
+  }
 }
