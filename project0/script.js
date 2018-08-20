@@ -17,11 +17,17 @@ function newTodo() {
   itemCountSpan.innerHTML = listCount
   uncheckedCountSpan.innerHTML = uncheckedCount
 
-  const listCheckbox = `<input type='checkbox' class='todo-checkbox' onClick='isChecked()' value='unchecked'></input>`
+  const listCheckbox = `<input type='checkbox' class='${classNames.TODO_CHECKBOX}' onClick='isChecked()' value='unchecked'></input>`
   const deleteButton = `<button class='todo-delete' onClick='deleteListItem()'>delete</button>`
   const listContent = `<div id='li${listCount}' class='todo-container'>${listCheckbox} TODO ${listCount}: <i>placeholder text for todo</i> ${deleteButton}</div>`
 
-  list.innerHTML += listContent
+
+  let listItem = document.createElement("div")
+  listItem.innerHTML = listContent
+
+  list.appendChild(listItem)
+
+  //list.innerHTML += listContent
 
 }
 
